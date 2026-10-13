@@ -27,7 +27,7 @@ print(f"Se guardaron {len(df)} registros en el CSV.")
 casos_por_comuna = df.groupby("comuna")["id"].count()
 print(f"\nCasos por comuna:\n{casos_por_comuna}")
 
-# Guardamos también en Excel como pide el profe
+# Guardamos también en Excel
 df.to_excel("dengue_filtrado.xlsx", index=False)
 print("Archivo Excel creado con éxito.")
 
@@ -36,33 +36,33 @@ promedio_edad = df["edad_"].mean()
 desviacion_edad = df["edad_"].std()
 # Filtro pacientes menores de 18 años
 menores_edad = df[df["edad_"] < 18]
-print(f"Cantidad de menores de edad afectados: {len(menores_edad)}")
+print(f"Cantidad de menores de edad afectados: {len(menores_edad)}") #se imprime la cantidad de pacientes menores de edad
 
-# 6. Filtros avanzados para la tarea
+# 6. Filtros de pacientes mayores al promedio, casos de años despues del 2019
 pacientes_mayores_promedio = df[df["edad_"] > promedio_edad]
 eventos_recientes = df[df["year_"] > 2019]
-
+#se imprime el promedio de edades, desviacion,pacientes>promedio y casos  de años > a 2019
 print(f"\nPromedio de edad: {promedio_edad:.2f}")
 print(f"Desviación estándar: {desviacion_edad:.2f}") 
 print(f"Pacientes mayores al promedio de edad: {len(pacientes_mayores_promedio)}")
 print(f"Casos de años mayores a 2019: {len(eventos_recientes)}")
 
 # Gráfico 1: Histograma de distribución de edades
-plt.figure(figsize=(8, 5)) 
-plt.hist(df["edad_"], bins=10, color="skyblue", edgecolor="black")
-plt.title("Histograma de Distribución de Edades")
-plt.xlabel("Edad")
-plt.ylabel("Frecuencia (Casos)")
-plt.grid(True, linestyle="--", alpha=0.6)
-plt.show()
+plt.figure(figsize=(8, 5)) # ancho , alto 
+plt.hist(df["edad_"], bins=10, color="skyblue", edgecolor="black") # histograma de edades
+plt.title("Histograma de Distribución de Edades") # titulo del histograma
+plt.xlabel("Edad") # titulo eje x
+plt.ylabel("Frecuencia (Casos)") # titulo eje y 
+plt.grid(True, linestyle="--", alpha=0.6) # cuadricula
+plt.show() #muestra histograma
 
 # Gráfico 2: Gráfico de barras por comuna
-plt.figure(figsize=(10, 5))
-casos_por_comuna.plot(kind="bar", color="salmon", edgecolor="black")
-plt.title("Cantidad de Casos de Dengue por Comuna")
-plt.xlabel("Comuna / Zona Geográfica")
-plt.ylabel("Cantidad de Eventos")
-plt.xticks(rotation=45, ha="right")
+plt.figure(figsize=(10, 5)) # ancho, alto 
+casos_por_comuna.plot(kind="bar", color="salmon", edgecolor="black") #
+plt.title("Cantidad de Casos de Dengue por Comuna") #titulo del grafico 
+plt.xlabel("Comuna / Zona Geográfica") #titulo eje x
+plt.ylabel("Cantidad de Eventos")#titulo eje y 
+plt.xticks(rotation=45, ha="right") #
 plt.grid(axis="y", linestyle="--", alpha=0.6)
 plt.tight_layout()
 plt.show()
