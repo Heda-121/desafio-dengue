@@ -27,13 +27,16 @@ print(f"Se guardaron {len(df)} registros en el CSV.")
 casos_por_comuna = df.groupby("comuna")["id"].count()
 print(f"\nCasos por comuna:\n{casos_por_comuna}")
 
-# Guardamos también en Excel como pide la profe
+# Guardamos también en Excel como pide el profe
 df.to_excel("dengue_filtrado.xlsx", index=False)
 print("Archivo Excel creado con éxito.")
 
 # 5. Calculamos promedio y desviación estándar de la edad
 promedio_edad = df["edad_"].mean()
 desviacion_edad = df["edad_"].std()
+# Filtro pacientes menores de 18 años
+menores_edad = df[df["edad_"] < 18]
+print(f"Cantidad de menores de edad afectados: {len(menores_edad)}")
 
 # 6. Filtros avanzados para la tarea
 pacientes_mayores_promedio = df[df["edad_"] > promedio_edad]
@@ -45,7 +48,7 @@ print(f"Pacientes mayores al promedio de edad: {len(pacientes_mayores_promedio)}
 print(f"Casos de años mayores a 2019: {len(eventos_recientes)}")
 
 # Gráfico 1: Histograma de distribución de edades
-plt.figure(figsize=(8, 5))
+plt.figure(figsize=(8, 5)) 
 plt.hist(df["edad_"], bins=10, color="skyblue", edgecolor="black")
 plt.title("Histograma de Distribución de Edades")
 plt.xlabel("Edad")
