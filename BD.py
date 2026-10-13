@@ -1,5 +1,5 @@
+import matplotlib.pyplot as plt
 import pandas as pd
-
 # 1. Cargamos el archivo original de dengue
 df_completo = pd.read_csv("dengue.csv")
 
@@ -39,9 +39,37 @@ desviacion_edad = df["edad_"].std()
 pacientes_mayores_promedio = df[df["edad_"] > promedio_edad]
 eventos_recientes = df[df["year_"] > 2019]
 
-print(f"\nPromedio de edad: {promedio_edad:.2f}")
-print(f"Desviación estándar: {desviacion_edad:.2f}")
+print(f"\nPromedio de edad: {promedio_edad}")
+print(f"Desviación estándar: {desviacion_edad}")
 print(f"Pacientes mayores al promedio de edad: {len(pacientes_mayores_promedio)}")
 print(f"Casos de años mayores a 2019: {len(eventos_recientes)}")
 
+# Gráfico 1: Histograma de distribución de edades
+plt.figure(figsize=(8, 5))
+plt.hist(df["edad_"], bins=10, color="skyblue", edgecolor="black")
+plt.title("Histograma de Distribución de Edades")
+plt.xlabel("Edad")
+plt.ylabel("Frecuencia (Casos)")
+plt.grid(True, linestyle="--", alpha=0.6)
+plt.show()
+
+# Gráfico 2: Gráfico de barras por comuna
+plt.figure(figsize=(10, 5))
+casos_por_comuna.plot(kind="bar", color="salmon", edgecolor="black")
+plt.title("Cantidad de Casos de Dengue por Comuna")
+plt.xlabel("Comuna / Zona Geográfica")
+plt.ylabel("Cantidad de Eventos")
+plt.xticks(rotation=45, ha="right")
+plt.grid(axis="y", linestyle="--", alpha=0.6)
+plt.tight_layout()
+plt.show()
+
+# Gráfico 3: Gráfico de dispersión (Edad vs Semana)
+plt.figure(figsize=(8, 5))
+plt.scatter(df["edad_"], df["semana"], color="purple", alpha=0.7)
+plt.title("Gráfico de Dispersión: Edad vs Semana Epidemiológica")
+plt.xlabel("Edad del Paciente")
+plt.ylabel("Semana Epidemiológica")
+plt.grid(True, linestyle="--", alpha=0.6)
+plt.show()
 
