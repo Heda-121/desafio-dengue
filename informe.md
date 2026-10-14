@@ -113,10 +113,16 @@ a dos decimales (`.2f`):
 El sistema genera e integra tres visualizaciones fundamentales:
 1. **Histograma de Distribución de Edades:** Muestra la frecuencia de casos segmentada en 10
 intervalos, evidenciando los rangos etarios más propensos al contagio.
-2. **Gráfico de Barras por Comuna:** Ilustra de forma clara la concentración geográfica de los
+<img width="799" height="499" alt="Figure_1" src="https://github.com/user-attachments/assets/310fd2d3-bab4-4d30-bb71-10956c0104e5" />
+
+3. **Gráfico de Barras por Comuna:** Ilustra de forma clara la concentración geográfica de los
 eventos epidemiológicos por zona.
-3. **Gráfico de Dispersión (Edad vs Semana):** Relaciona la edad del paciente con la semana
+<img width="999" height="499" alt="Figure_2" src="https://github.com/user-attachments/assets/ce7bdb20-2f49-48d0-8911-f1094715ab77" />
+
+5. **Gráfico de Dispersión (Edad vs Semana):** Relaciona la edad del paciente con la semana
 epidemiológica en la que ocurrió el registro.
+<img width="799" height="499" alt="Figure_3" src="https://github.com/user-attachments/assets/89aaa14b-2042-40c1-adae-7998afa099bd" />
+
 ---
 ## 6. Interpretaciones y Conclusiones Basadas en los Análisis Realizados
 * **Impacto Demográfico:** El análisis estadístico de la muestra seleccionada permite identificar
